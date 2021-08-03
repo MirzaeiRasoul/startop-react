@@ -1,37 +1,41 @@
-import '../styles/home.css';
-import logo from '../img/logo.png';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MdSearch } from 'react-icons/md';
 
-export default function Home () {
+import Header from '../components/Header';
+
+const Home = () => {
+  const [query, setQuery] = useState('');
+
+  const handleSearchInputChange = (e) => {
+    setQuery(e.target.value);
+  }
+
+  const handleEnterKeyEvent = (e) => {
+    if (e.keyCode === 13) {
+      e.preventDefault();
+      document.getElementsByClassName("search-button")[0].click();
+    }
+  }
+
   return (
-    <div className="container">
-      <div className="background"></div>
-      <div className="background-cover"></div>
-      <header className="header">
-        <ul className="menu">
-          <li className="menu-item active"><a href="#">خانه</a></li>
-          <li className="menu-item"><a href="#">استارتاپ</a></li>
-          <li className="menu-item"><a href="#">تماس با ما</a></li>
-          <li className="menu-item"><a href="#">درباره ما</a></li>
-        </ul>
-        <img className="logo" src={logo} />
-      </header>
+    <React.Fragment>
+      <Header />
       <main className="main">
         <div className="main-content">
           <span className="main-title">استارتآپ</span>
-          <span className="main-description">موتور جستجوی تخصصی استارتاپی ایران</span>
+          <span className="main-description ">موتور جستجوی تخصصی استارتاپی ایران</span>
           <div className="search-container">
-            <input className="search-input" placeholder="نام استارتاپ مورد نظر خود را وارد کنید."/>
-            <button className="search-button"><MdSearch /></button>
+            <input className="search-input" placeholder="نام استارتاپ مورد نظر خود را وارد کنید."
+              value={query} onChange={handleSearchInputChange} onKeyUp={handleEnterKeyEvent} />
+            <Link class="search-button" to={{ pathname: '/search', search: `?q=${query}` }}>
+              <MdSearch />
+            </Link>
           </div>
         </div>
       </main>
-      <footer className="footer">
-        <div>
-          <span>کلیه حقوق این سایت متعلق به شرکت نوقصان می‌باشد.</span>
-        </div>
-        <span>Copyright @ 2020 Noughsun</span>
-      </footer>
-    </div>
+    </React.Fragment>
   );
 }
+
+export default Home;
