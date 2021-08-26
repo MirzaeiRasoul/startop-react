@@ -3,13 +3,17 @@ html, body, #root {
 }
 
 body {
-  margin: 0;
+  direction: rtl;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: #e5edf1;
+  margin: 0;
 }
 
-/* ----- Custom Styles ----- */
+/* --------- ------------- ------------
+------------ Default Style ------------
+------------ ------------- --------- */
 
 * {
   font-family: Vazir;
@@ -21,11 +25,115 @@ a {
   text-decoration: none;
 }
 
+button {
+  color: #303A40;
+  background: #95c5ff;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 20px;
+  border-radius: 4px;
+  border: none;
+}
+
+input {
+  color: #303A40;
+  border: 1px solid #303A4033;
+  border-radius: 4px;
+  padding: 8px;
+  outline: none;
+}
+
+/* --------- ------------- ------------
+------------ Helper Styles ------------
+------------ ------------- --------- */
+
+.flex {
+  display: flex;
+}
+
+.align-center {
+  align-items: center;
+  justify-content: center;
+}
+
+.dir-col {
+  flex-direction: column;
+}
+
+.m-t-4 {
+  margin-top: 4px;
+}
+
+.m-t-8 {
+  margin-top: 8px;
+}
+
+.m-t-12 {
+  margin-top: 12px;
+}
+
+.m-t-16 {
+  margin-top: 16px;
+}
+
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-r-4 {
+  margin-right: 4px;
+}
+
+.m-r-8 {
+  margin-right: 8px;
+}
+
+.m-r-12 {
+  margin-right: 12px;
+}
+
+.m-r-16 {
+  margin-right: 16px;
+}
+
+.m-r-20 {
+  margin-right: 20px;
+}
+
+.m-b-4 {
+  margin-left: 4px;
+}
+
+.m-b-8 {
+  margin-bottom: 8px;
+}
+
+.m-b-12 {
+  margin-bottom: 12px;
+}
+
+.m-b-16 {
+  margin-bottom: 16px;
+}
+
+.m-b-20 {
+  margin-bottom: 20px;
+}
+
+.m-l-20 {
+  margin-left: 20px;
+}
+
+/* --------- ------------- ------------
+------------  Home Styles  ------------
+------------ ------------- --------- */
+
 .container {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
   direction: rtl;
-  color: #e5edf1;
 }
 
 .background {
@@ -51,9 +159,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* position: sticky;
-  top: 0;
-  left: 0; */
+  flex: none;
   padding: 0 80px;
   box-shadow: 0px 0px 15px rgb(10 10 10 / 60%);
 }
@@ -91,7 +197,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: calc(100% - 150px);
+  flex: auto;
   padding: 0 80px;
 }
 
@@ -117,7 +223,7 @@ a {
   width: 500px;
   height: 44px;
   border-radius: 4px;
-  background: #FAFCFCDD;
+  background: #e5edf1;
 }
 
 .search-input {
@@ -125,15 +231,10 @@ a {
   height: 100%;
   padding: 0px 12px;
   border: none;
-  outline: none;
   background: transparent;
-  color: #303A40;
 }
 
 .search-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 60px;
   height: 100%;
   font-size: 24px;
@@ -143,11 +244,9 @@ a {
   border-radius: 4px 0 0 4px;
 }
 
-/* ----- Search Page ----- */
-
-.main.searh-page {
-  height: auto;
-}
+/* --------- ------------- ------------
+------------ Search Styles ------------
+------------ ------------- --------- */
 
 .main-panel {
   width: calc(100% - 270px);
@@ -157,7 +256,7 @@ a {
 .main-panel-header {
   width: 100%;
   height: 50px;
-  /* background: #FAFCFC11; */
+  /* background: #e5edf111; */
   /* border-bottom: 1px solid #303A4033; */
 }
 
@@ -193,20 +292,79 @@ a {
 .left-panel {
   width: 270px;
   height: 100%;
-  /* background: #FAFCFC11; */
+  /* background: #e5edf111; */
   /* border-right: 1px solid #303A4033; */
 }
 
-/* ----- Footer Styles ----- */
+/* --------- ------------- ------------
+------------  Login Style  ------------
+------------ ------------- --------- */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background: #e5edf111; */
+}
+
+.modal {
+  box-shadow: 0 5px 10px #00000080;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  color: #303A40;
+  background: #e5edf1;
+  border-radius: 4px;
+}
+
+.login-header {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  background: #95c5ff;
+  padding: 0 16px;
+  border-radius: 4px 4px 0 0;
+}
+
+.login-content {
+  padding: 16px;
+}
+
+.form-label {
+  font-size: 14px;
+  margin-right: 4px;
+  margin-bottom: 8px;
+}
+
+.form-input {
+  font-size: 15px;
+}
+
+.form-message {
+  display: none;
+  color: #ee0000;
+  font-size: 13px;
+  padding: 0 4px;
+}
+
+/* --------- ------------- ------------
+------------ Footer Styles ------------
+------------ ------------- --------- */
 
 .footer {
-  /* width: 100%; */
+  width: 100%;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  /* position: fixed;
-  bottom: 0; */
+  flex: none;
   font-size: 13px;
   font-weight: 200;
   background: #17191acc;
@@ -214,4 +372,6 @@ a {
   box-shadow: 0px 0px 5px rgb(10 10 10 / 60%);
 }
 
-/* ----- Mobile Styles ----- */
+/* --------- ------------- ------------
+------------ Mobile Styles ------------
+------------ ------------- --------- */
