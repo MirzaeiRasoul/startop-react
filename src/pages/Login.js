@@ -8,7 +8,7 @@ const Login = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await Axios.post('http://localhost:5000/login/', {
+      await Axios.post('http://localhost:5000/api/v1/auth/login/', {
         user: {
           username: e.target.username.value,
           password: e.target.password.value

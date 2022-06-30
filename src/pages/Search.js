@@ -11,7 +11,7 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const clearQuery = decodeURIComponent(history.location.search.substring(3));
-        const response = await Axios.get(`http://localhost:5000/search/${clearQuery}`);
+        const response = await Axios.get(`http://localhost:5000/api/v1/search/${clearQuery}`);
         setDatas(response.data);
         setIsLoading(false);
       } catch (err) {

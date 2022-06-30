@@ -10,7 +10,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await Axios.get('http://localhost:5000/profile/');
+        const response = await Axios.get('http://localhost:5000/api/v1/profile/');
         setDatas(response.data);
         setIsLoading(false);
       } catch (err) {
