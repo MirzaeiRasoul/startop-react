@@ -1,33 +1,31 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+import Axios from '../utils/Axios';
 
-import ResultHeader from '../components/ResultHeader';
-
-const Home = (props) => {
+const Home = () => {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
-  const [query, setQuery] = useState('');
   const [datas, setDatas] = useState([]);
 
   useEffect(() => {
-    const clearQuery = decodeURIComponent(props.location.search.substring(3));
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:5000/search/${clearQuery}`);
+        const clearQuery = decodeURIComponent(history.location.search.substring(3));
+        const response = await Axios.get(`http://localhost:5000/search/${clearQuery}`);
         setDatas(response.data);
         setIsLoading(false);
       } catch (err) {
         console.log(err.response.data.message);
+        history.push('/login');
       }
     }
     fetchData();
-    setQuery(clearQuery);
-  }, [props]);
+  }, [history, history.location.search]);
 
   return (
     <React.Fragment>
-      <ResultHeader query={query} />
-      {isLoading ? <main className='main searh-page'>Loading ...</main> : (
-        <main className='main searh-page'>
+      {isLoading ? <main className='main'>Loading ...</main> : (
+        <main className='main'>
           <div className='main-panel'>
             <div className='main-panel-header'>
 
