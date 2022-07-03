@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Axios from '../utils/Axios';
+import axios from 'axios';
 
 const Home = () => {
   const history = useHistory();
@@ -11,12 +11,13 @@ const Home = () => {
     const fetchData = async () => {
       try {
         const clearQuery = decodeURIComponent(history.location.search.substring(3));
-        const response = await Axios.get(`http://localhost:5000/api/v1/search/${clearQuery}`);
-        setDatas(response.data);
+        const response = await axios.get(`/api/search/${clearQuery}`);
+        setDatas(response.data.startups);
         setIsLoading(false);
       } catch (err) {
-        console.log(err.response.data.message);
-        history.push('/login');
+        return;
+        // history.push('/login');
+        // console.log(err.response.data.message);
       }
     }
     fetchData();

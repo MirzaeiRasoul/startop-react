@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import Axios from '../utils/Axios';
+import { useAuth } from '../hooks/useAuth';
+import axios from 'axios';
 
 const Login = () => {
   const history = useHistory();
+  const [accessToken, setAccessToken] = useAuth();
+
+  useEffect(() => {
+    if (accessToken) {
+      history.push('/profile');
+    }
+  }, [history, accessToken]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await Axios.post('http://localhost:5000/api/v1/auth/login/', {
-        user: {
-          username: e.target.username.value,
-          password: e.target.password.value
-        }
+      const response = await axios.post('/api/auth/login/', {
+        username: e.target.username.value,
+        password: e.target.password.value
+      }, {
+        withCredentials: true
       });
-      history.push('/');
+      setAccessToken(response.data.accessToken);
+      history.push('/profile');
     } catch (err) {
       document.getElementsByClassName('form-message')[0].style.display = 'block';
       document.getElementsByClassName('form-message')[0].innerHTML = err.response.data.message;
