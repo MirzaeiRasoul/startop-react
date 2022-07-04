@@ -19,7 +19,7 @@ const Search = () => {
       }
     }
     fetchData();
-  }, [history, history.location.search]);
+  }, [history.location.search]);
 
   return (
     <React.Fragment>

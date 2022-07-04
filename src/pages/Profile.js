@@ -15,9 +15,7 @@ const Profile = () => {
 
     const fetchData = async () => {
       try {
-        const response = await axios.get('/api/auth/profile/', {
-          headers: { 'x-access-token': auth?.accessToken }
-        });
+        const response = await axios.get('/api/auth/profile/', { headers: { 'x-access-token': auth?.accessToken } });
         setDatas(response.data);
         setIsLoading(false);
       } catch (err) {
@@ -26,10 +24,8 @@ const Profile = () => {
         console.error(err.response.data.message);
       }
     }
-
     fetchData();
-
-  }, [history, auth?.accessToken, setAuth, setLogout]);
+  }, [auth?.accessToken]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <React.Fragment>

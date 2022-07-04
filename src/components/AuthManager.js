@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
 import useRefreshToken from '../hooks/useRefreshToken';
 
-const PersistLogin = ({ children }) => {
+const AuthManager = ({ children }) => {
     const { auth, isLogined } = useAuth();
     const [isLoading, setIsLoading] = useState(true);
     const refresh = useRefreshToken();
@@ -17,10 +17,8 @@ const PersistLogin = ({ children }) => {
                 setIsLoading(false);
             }
         }
-
         isLogined && !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false);
-
-    }, [refresh, auth?.accessToken, isLogined, isLoading])
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
         <React.Fragment>
@@ -33,4 +31,4 @@ const PersistLogin = ({ children }) => {
     );
 }
 
-export default PersistLogin;
+export default AuthManager;

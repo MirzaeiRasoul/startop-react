@@ -10,7 +10,7 @@ const Login = () => {
   useEffect(() => {
     // Prevent request when user is login and redirect user to profile page
     if (auth?.accessToken) history.push('/profile');
-  }, [history, auth?.accessToken]);
+  }, [auth?.accessToken]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const submitHandler = async (e) => {
     e.preventDefault();
