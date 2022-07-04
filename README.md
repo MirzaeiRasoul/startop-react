@@ -11,17 +11,18 @@ Solution: Store JWT access token in memory and refresh token in cookie.
 2. **Set IsAuthenticated State Globally in React. [Done]**\
 Solution: 
 3. **Resolve Authentication Errors and Problems. [Done]**\
-Definition: It's update in next sequence after login (Profile.js) X No!
-Problem is render Profile page twice (one after login, one after refresh). Both of them fetch request to server.
+Definition: It's update in next sequence after login (Profile.js) X No!\
+Problem is render Profile page twice (one after login, one after refresh). Both of them fetch request to server.\
 Solution: Resolve this issue with remove wrong useffect dependencies.
 4. **Check User Exist in Database. [Done]**\
 Solution: Resolve with JWT (jsonwebtoken) package.
 5. **Setup CSRF Protection Config.**\
 Solution: 
-x. **Use Mongo for Database.**\
+6. **Use Mongo for Database.**\
 Solution: 
-x. **Study React reportWebVitals package.**\
+7. **Study React reportWebVitals package.**\
 Solution: 
 
 React from Scratch
+
 React Global State with Context
