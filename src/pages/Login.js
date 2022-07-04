@@ -1,29 +1,25 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '../hooks/useAuth';
+import useAuth from '../hooks/useAuth';
 import axios from 'axios';
 
 const Login = () => {
   const history = useHistory();
-  const [accessToken, setAccessToken] = useAuth();
+  const { auth, setAuth, setLogin } = useAuth();
 
   useEffect(() => {
-    if (accessToken) {
-      history.push('/profile');
-    }
-  }, [history, accessToken]);
+    // Prevent request when user is login and redirect user to profile page
+    if (auth?.accessToken) history.push('/profile');
+  }, [history, auth?.accessToken]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const username = e.target.username.value;
+    const password = e.target.password.value;
     try {
-      const response = await axios.post('/api/auth/login/', {
-        username: e.target.username.value,
-        password: e.target.password.value
-      }, {
-        withCredentials: true
-      });
-      setAccessToken(response.data.accessToken);
-      history.push('/profile');
+      const response = await axios.post('/api/auth/login/', { username, password }, { withCredentials: true });
+      setLogin();
+      setAuth({ accessToken: response.data.accessToken });
     } catch (err) {
       document.getElementsByClassName('form-message')[0].style.display = 'block';
       document.getElementsByClassName('form-message')[0].innerHTML = err.response.data.message;

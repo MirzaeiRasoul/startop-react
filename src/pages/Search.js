@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const Home = () => {
+const Search = () => {
   const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
   const [datas, setDatas] = useState([]);
@@ -15,9 +15,7 @@ const Home = () => {
         setDatas(response.data.startups);
         setIsLoading(false);
       } catch (err) {
-        return;
-        // history.push('/login');
-        // console.log(err.response.data.message);
+        console.error(err.response.data.message);
       }
     }
     fetchData();
@@ -25,7 +23,9 @@ const Home = () => {
 
   return (
     <React.Fragment>
-      {isLoading ? <main className='main'>Loading ...</main> : (
+      {isLoading ?
+        <main className='main'>Loading ...</main>
+        :
         <main className='main'>
           <div className='main-panel'>
             <div className='main-panel-header'>
@@ -51,9 +51,9 @@ const Home = () => {
 
           </div>
         </main>
-      )}
+      }
     </React.Fragment>
   );
 }
 
-export default Home;
+export default Search;
