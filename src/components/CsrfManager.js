@@ -1,23 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import useAuth from '../hooks/useAuth';
-import useRefreshToken from '../hooks/useRefreshToken';
+import useCsrf from '../hooks/useCsrf';
 
-const AuthManager = ({ children }) => {
+const CsrfManager = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
-    const { auth, isLogined } = useAuth();
-    const refresh = useRefreshToken();
+    const csrf = useCsrf();
 
     useEffect(() => {
-        const verifyRefreshToken = async () => {
+        const getCsrfToken = async () => {
             try {
-                await refresh();
+                await csrf();
             } catch (err) {
                 console.error(err.response.data.message);
             } finally {
                 setIsLoading(false);
             }
-        }
-        isLogined && !auth?.accessToken ? verifyRefreshToken() : setIsLoading(false);
+        };
+        getCsrfToken();
     }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
     return (
@@ -31,4 +29,4 @@ const AuthManager = ({ children }) => {
     );
 }
 
-export default AuthManager;
+export default CsrfManager;

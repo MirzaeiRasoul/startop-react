@@ -6,11 +6,11 @@ import useLogout from '../hooks/useLogout';
 import logo from '../img/logo.png';
 
 const Header = () => {
-  const { auth } = useAuth();
   const history = useHistory();
   const location = useLocation();
   const [showLoginButton, setShowLoginButton] = useState();
   const [showSearchInput, setShowSearchInput] = useState();
+  const { auth } = useAuth();
 
   useEffect(() => {
     setShowLoginButton(!['/login', '/search'].includes(location.pathname));

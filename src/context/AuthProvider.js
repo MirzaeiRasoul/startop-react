@@ -4,20 +4,20 @@ const AuthContext = createContext({});
 
 const AuthProvider = ({ children }) => {
     const [auth, setAuth] = useState({});
-    const [isLogined, setIsLogined] = useState(JSON.parse(localStorage.getItem('isLogined')) || false);
+    const [isLogined, innerSetIsLogined] = useState(JSON.parse(localStorage.getItem('isLogined')) || false);
 
-    const setLogin = () => {
-        setIsLogined(true);
-        localStorage.setItem('isLogined', JSON.stringify(true));
-    }
-
-    const setLogout = () => {
-        setIsLogined(false);
-        localStorage.setItem('isLogined', JSON.stringify(false));
+    const setIsLogined = (value) => {
+        if (value) {
+            innerSetIsLogined(true);
+            localStorage.setItem('isLogined', JSON.stringify(true));
+        } else {
+            innerSetIsLogined(false);
+            localStorage.setItem('isLogined', JSON.stringify(false));
+        }
     }
 
     return (
-        <AuthContext.Provider value={{ auth, setAuth, isLogined, setLogin, setLogout }}>
+        <AuthContext.Provider value={{ auth, setAuth, isLogined, setIsLogined }}>
             {children}
         </AuthContext.Provider>
     );

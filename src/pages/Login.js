@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Login = () => {
   const history = useHistory();
-  const { auth, setAuth, setLogin } = useAuth();
+  const { auth, setAuth, setIsLogined } = useAuth();
 
   useEffect(() => {
     // Prevent request when user is login and redirect user to profile page
@@ -18,7 +18,7 @@ const Login = () => {
     const password = e.target.password.value;
     try {
       const response = await axios.post('/api/auth/login/', { username, password }, { withCredentials: true });
-      setLogin();
+      setIsLogined(true);
       setAuth({ accessToken: response.data.accessToken });
     } catch (err) {
       document.getElementsByClassName('form-message')[0].style.display = 'block';
