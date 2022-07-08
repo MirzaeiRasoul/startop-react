@@ -1,7 +1,7 @@
 import useAuth from './useAuth';
-import axios from 'axios';
+import axios from '../utils/axios';
 
-const useRefreshToken = () => {
+const useRefresh = () => {
     const { setAuth, setIsLogined } = useAuth();
 
     const refresh = async () => {
@@ -10,11 +10,11 @@ const useRefreshToken = () => {
             setIsLogined(true);
             setAuth({ accessToken: response.data.accessToken });
         } catch (err) {
-            console.error(err.response.data.message);
+            throw err;
         }
     }
 
     return refresh;
 }
 
-export default useRefreshToken;
+export default useRefresh;

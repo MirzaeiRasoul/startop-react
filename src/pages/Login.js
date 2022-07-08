@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import useAuth from '../hooks/useAuth';
-import axios from 'axios';
+import axios from '../utils/axios';
 
 const Login = () => {
   const history = useHistory();

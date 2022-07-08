@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import useAuth from '../hooks/useAuth';
-import useRefreshToken from '../hooks/useRefreshToken';
+import useRefresh from '../hooks/useRefresh';
 
 const AuthManager = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
     const { auth, isLogined } = useAuth();
-    const refresh = useRefreshToken();
+    const refresh = useRefresh();
 
     useEffect(() => {
         const verifyRefreshToken = async () => {

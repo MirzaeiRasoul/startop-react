@@ -1,5 +1,5 @@
 import useAuth from './useAuth';
-import axios from 'axios';
+import axios from '../utils/axios';
 
 const useLogout = () => {
     const { setAuth, setIsLogined } = useAuth();
