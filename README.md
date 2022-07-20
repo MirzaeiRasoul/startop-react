@@ -29,19 +29,22 @@ Problem is render Profile page twice (one after login, one after refresh). Both 
 ### 6. Prevent Default Browser Console Error Logs. [:heavy_check_mark:]
 * Use from custom axios and clear console is catch blocks.
 
-### 7. Check to decrease number of refresh reqs (refresh just on need auth page?) (It's Correct?)
+### 7. Select Best Database (Mongo).
 
-### 8. Axios Error Handling Best Practices.
+### 8. Check and Verify User Exist in Database.
+
+### 9. Study and Develop PWA Version
+
+### 10. Study React reportWebVitals Package.
+
+## Optimization and Improvements
+### 1. Check to decrease number of refresh reqs (refresh just on need auth page?) (It's Correct?)
+
+### 2. Axios Error Handling Best Practices.
 * Source: https://www.youtube.com/watch?v=brcHK3P6ChQ&list=PL0Zuz27SZ-6PRCpm9clX0WiBEMB70FWwd&index=2
 
-### 9. Add Blacklist Mechanism for Prevent Old Tokens.
+### 3. Add Blacklist Mechanism for Prevent Old Tokens.
 * Source: https://supertokens.com/blog/revoking-access-with-a-jwt-blacklist
-
-### 10. Check and Verify User Exist in Database. 
-
-### 11. Select Best Database (Mongo).
-
-### 12. Study React reportWebVitals Package.
 
 <br/>
 React from Scratch\
