@@ -1,8 +1,10 @@
 # React Best Practices
 This project is created for test and run best practices hello world.
 
+
 ## Authentication Management
 * JWT authentication with refresh tokens: Store JWT access token in memory and refresh token in cookie.
+
 
 ## To Do List
 ### 1. Select Best Authentiaction Mechanism. [:heavy_check_mark:]
@@ -36,6 +38,7 @@ Problem is render Profile page twice (one after login, one after refresh). Both 
 ### 9. Study and Develop PWA Version
 
 ### 10. Study React reportWebVitals Package.
+
 
 ## Optimization and Improvements
 ### 1. Check to decrease number of refresh reqs (refresh just on need auth page?) (It's Correct?)
