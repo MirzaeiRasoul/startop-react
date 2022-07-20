@@ -41,13 +41,10 @@ const Header = () => {
       }
       <div className='flex align-center'>
         {!showLoginButton ?
-          '' :
-          // <button className='login-btn m-l-20' onClick={() => history.push('/login')}>ورود</button>
+          <></>
+          :
           auth?.accessToken ?
-          <>
             <button className='login-btn m-l-20' onClick={signout}>خروج</button>
-            <button className='login-btn m-l-20' onClick={() => history.push('/profile')}>پروفایل</button>
-            </>
             :
             <button className='login-btn m-l-20' onClick={() => history.push('/login')}>ورود</button>
         }
